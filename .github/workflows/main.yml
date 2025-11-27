@@ -10,7 +10,7 @@ jobs:
     steps:
       #get access to repo
       - name: "get repo"
-        uses: actiona/checkout@v6
+        uses: actions/checkout@v6
         
       #install python
       - name: "install python"
