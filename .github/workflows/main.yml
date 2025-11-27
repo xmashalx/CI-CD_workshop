@@ -4,12 +4,25 @@ on:
       -main
   workflow_dispatch:
 jobs:
-  example:
-    name: "example job"
-    runs-on: "ubuntu_latest"
+  quality_check:
+    name: "quality check"
+    runs-on: "ubuntu-latest"
     steps:
-      - name: "step 1"
-        run: echo "hi"
-      - name: "step 2"
-        run: echo "hi again"
+      #get access to repo
+      - name: "get repo"
+        uses: actiona/checkout@v6
+        
+      #install python
+      - name: "install python"
+        uses: actions/setup-python@v6
+      
+      #install libraries
+      - name: "install libaries"
+        run: pip install -r requirements.txt
+        
+      #run pytest/pylint
+      - name: "run pylint and pytest"
+        run: pytest
+      
+    
       
